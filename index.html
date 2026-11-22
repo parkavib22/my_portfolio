@@ -1,68 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      text-align: center;
-    }
-    header {
-      padding: 60px 20px;
-      background: #1e293b;
-    }
-    h1 { color: #38bdf8; }
-    section { padding: 30px; }
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      margin: 15px auto;
-      border-radius: 12px;
-      max-width: 500px;
-    }
-    a { color: #38bdf8; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background: #111827;
+  position: sticky;
+  top: 0;
+}
+nav h2 { color: #38bdf8; }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+}
+nav a:hover { color: #38bdf8; }
+
+.hero {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+}
+.hero h1 {
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+.hero span { color: #38bdf8; }
+.hero p { color: #cbd5e1; margin: 12px; }
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #38bdf8;
+  color: #0f172a;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+section {
+  padding: 60px 8%;
+  text-align: center;
+}
+section h2 {
+  color: #38bdf8;
+  margin-bottom: 25px;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.card {
+  background: #1e293b;
+  padding: 25px;
+  width: 280px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 15px #38bdf855;
+}
+.card p { color: #cbd5e1; margin-top: 10px; }
+footer {
+  padding: 25px;
+  background: #111827;
+  text-align: center;
+  color: #94a3b8;
+}
+</style>
 </head>
 <body>
 
-<header>
-  <h1>Hello, I'm Parkavi Balaji 👋</h1>
-  <p>Student | Developer | Tech Enthusiast</p>
-</header>
+<nav>
+  <h2>MyPortfolio</h2>
+  <div>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-<section>
+<div class="hero">
+  <h1>Hello, I'm <span>Your Name</span> 👋</h1>
+  <p>I'm a <span id="typing"></span></p>
+  <p>Welcome to my personal portfolio website!</p>
+  <a href="#projects" class="btn">View Projects</a>
+</div>
+
+<section id="about">
   <h2>About Me</h2>
-  <p>I'm a MCA student interested in programming and web development.</p>
+  <p>I'm a student passionate about coding, web development
+  and learning new technologies.</p>
 </section>
 
-<section>
+<section id="skills">
   <h2>My Skills</h2>
-  <p>HTML | CSS | JavaScript | Python | Java</p>
-</section>
-
-<section>
-  <h2>My Projects</h2>
-  <div class="card">
-    <h3>My First Website</h3>
-    <p>A simple website created using HTML and CSS.</p>
+  <div class="cards">
+    <div class="card"><h3>HTML</h3></div>
+    <div class="card"><h3>CSS</h3></div>
+    <div class="card"><h3>JavaScript</h3></div>
+    <div class="card"><h3>Python</h3></div>
+    <div class="card"><h3>Java</h3></div>
   </div>
 </section>
 
-<section>
-  <h2>parkavib69@gmail.com</h2>
-  <p>
-    <a href="https://github.com/parkavib22">My GitHub</a>
-  </p>
+<section id="projects">
+  <h2>My Projects</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Portfolio Website</h3>
+      <p>A personal website built with HTML and CSS.</p>
+    </div>
+    <div class="card">
+      <h3>Web Development</h3>
+      <p>A simple responsive website project.</p>
+    </div>
+    <div class="card">
+      <h3>Python Project</h3>
+      <p>A beginner Python programming project.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <p>Connect with me on GitHub.</p>
+  <a class="btn"
+  href="https://github.com/parkavib22"
+  target="_blank">GitHub</a>
 </section>
 
 <footer>
-  <p>© 2026 My Portfolio</p>
+  <p>© 2026 Parkavi Balaji | Portfolio</p>
 </footer>
+
+<script>
+const words = ["Student", "Developer", "Tech Enthusiast"];
+let i = 0, j = 0, deleting = false;
+
+function type() {
+  const el = document.getElementById("typing");
+  el.textContent = words[i].substring(0, j);
+
+  if (!deleting && j < words[i].length) {
+    j++;
+    setTimeout(type, 120);
+  } else if (!deleting) {
+    deleting = true;
+    setTimeout(type, 1000);
+  } else if (j > 0) {
+    j--;
+    setTimeout(type, 60);
+  } else {
+    deleting = false;
+    i = (i + 1) % words.length;
+    setTimeout(type, 300);
+  }
+}
+type();
+</script>
 
 </body>
 </html>
